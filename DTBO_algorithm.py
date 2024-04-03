@@ -11,47 +11,24 @@ from numpy.random import randint,random
 import matplotlib
 from matplotlib import pyplot as plt
 
-# x=8
-# y=9
-# z=3
+
 dimension=2
 SearchAgents=10
 Max_iterations=500
 lowerbound=[-500,0]
 upperbound=[10,150]
 
-# def fitness (x,y):
-#     fit=np.cos(x)+np.sin(y)
-#     return fit
 
-# def fitness (x,y,z): #my_fit
-#     fit=np.cos(k[0])+np.sin(k[1])*(np.tan(k[2]))
-#     return fit
-
-# def fitness (x,y):   #F17
-#     F17=(y-(x**2)*5.1/(4*(np.pi**2))+5/np.pi*x-6)**2+10*(1-1/(8*np.pi))*np.cos(x)+10
-#     return F17
-
-# def fitness (x,y):   # booth
-#     F17=(x + 2*y - 7)**2 + (2*x + y - 5)**2
-#     return F17
-
-# def fitness (x,y):   #bukin
-#     F17=100 * np.sqrt(np.abs(y - 0.01 * x**2)) + 0.01 * np.abs(x + 10)
-#     return F17
-
+# Example Fitness function
 def fitness (x,y):   #matyas
     F17=0.26 * (x**2 + y**2) - 0.48 * x * y
     return F17
 
-# def fitness (x,y):   #F
-#     F=(2*(x**2))+3*(y**2)
-#     return F
 
+########## this plot is for 2D curves ############
 space = np.linspace(-50, 50, 100)
 X1,Y1 = np.meshgrid(space,space)
 fitness_plot=fitness(X1,Y1)
-# np.min(fitness_plot)
 figu=plt.figure()
 ax=plt.axes(projection='3d')
 ax.plot_surface(X1,Y1,fitness_plot
@@ -61,7 +38,6 @@ ax.set_ylabel('y')
 ax.set_zlabel('z')
 plt.plot
 
-# def DTBO (SearchAgents=30,Max_iterations,lowerbound,upperbound,dimension,fitness):
 
 X=np.float64(np.random.randint(lowerbound,upperbound,(SearchAgents,dimension)))
 
@@ -121,9 +97,9 @@ for t in range(0,Max_iterations):
             if F_P1 <= fitnes_0[i][0]:
                 X[i]=X_PI
                 
-          #  %% END Phase 1: training by the driving instructor (exploration)
+          # END Phase 1: training by the driving instructor (exploration)
     
-          #  %% Phase 2: learner driver patterning from instructor skills (exploration)
+          # Phase 2: learner driver patterning from instructor skills (exploration)
             
             PIndex=0.01+0.9*(1-t/Max_iterations)
             X_P2=(PIndex)* X[i]+(1-PIndex) * (Xbest)  # Eq. (7)
@@ -168,17 +144,6 @@ plt.ylabel('best solution')
 plt.xlabel('Iteration')
 plt.show()
 print(fbest)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
